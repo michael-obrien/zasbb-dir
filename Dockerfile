@@ -9,6 +9,7 @@ RUN npm install
 
 RUN npm build
 
+ENV ZASBB_FUNCTION="Directory"
 EXPOSE 10101
 
 ENTRYPOINT ["npm", "start"]
