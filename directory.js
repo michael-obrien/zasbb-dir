@@ -5,6 +5,12 @@ seneca.use('jsonfile-store',{folder:'./localdb'})
 
 seneca.listen(10101)
 
+//discovery - for debug only
+seneca.add({cmd:'config'}, function (msg, done) {
+  console.log(msg.data);
+  done(null, msg.data);
+});
+
 //not used currently. 'user' entities will contain publically available info.
   //regarding users; but no credentials etc. Those are stored in same 'id'
   //'credential' entities currently.
