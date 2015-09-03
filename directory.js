@@ -29,6 +29,30 @@ seneca.add( 'role:find,cmd:post', function FindPost( msg, respond ) {
   })
 })
 
+//make or update a post in the database
+seneca.add( 'role:save,cmd:post', function SavePost( msg, respond ) {
+  var post=seneca.make$('post')
+  post = msg.msg;
+  post.save$(function (err, post) {
+    if (err) {
+      respond(err);
+    }
+    respond(null, post);
+  });
+});
+
+//make or update a thread in the database
+seneca.add( 'role:save,cmd:thread', function SaveThread( msg, respond ) {
+  var thread=seneca.make$('thread')
+  thread = msg.msg;
+  thread.save$(function (err, thread) {
+    if (err) {
+      respond(err);
+    }
+    respond(null, thread);
+  });
+});
+
 //return a specific thread (which contains the list of all posts therein as well
   //as Authors, timestamps etc.)
 seneca.add( 'role:find,cmd:thread', function FindThread( msg, respond ) {
